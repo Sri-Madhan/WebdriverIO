@@ -1,0 +1,15 @@
+#reports
+/allure-results
+/logs
+
+#node
+/node_modules
+
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+#vs code
+/.vscode
+

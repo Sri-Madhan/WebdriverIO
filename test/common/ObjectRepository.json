@@ -1,0 +1,36 @@
+{
+    "BottomNavbar":{
+        "home": {
+            "android":"//android.view.View[@content-desc=\"Home\"]",
+            "ios":"//XCUIElementTypeButton[@name=\"Home\"]"
+        },
+        "login": {
+            "android":"//android.view.View[@content-desc=\"Login\"]",
+            "ios":"//XCUIElementTypeButton[@name=\"Login\"]"
+        }
+    },
+    "HomePage":{
+        "description": {
+            "android":"//android.widget.TextView[@text=\"Demo app for the appium-boilerplate\"]",
+            "ios":"//XCUIElementTypeStaticText[@name=\"Demo app for the appium-boilerplate\"]"
+        }
+    },
+    "LoginPage":{
+        "title":{
+            "android":"//android.widget.TextView[@text=\"Login / Sign up Form\"]",
+            "ios":"//XCUIElementTypeStaticText[@name=\"Login / Sign up Form\"]"
+        },
+        "email": {
+            "android":"//android.widget.EditText[@content-desc=\"input-email\"]",
+            "ios":"//XCUIElementTypeTextField[@name=\"input-email\"]"
+        },
+        "password": {
+            "android":"//android.widget.EditText[@content-desc=\"input-password\"]",
+            "ios":"//XCUIElementTypeSecureTextField[@name=\"input-password\"]"
+        },
+        "submit": {
+            "android":"//android.view.ViewGroup[@content-desc=\"button-LOGIN\"]",
+            "ios":"//XCUIElementTypeStaticText[@name=\"LOGIN\"]"
+        }
+    }
+}

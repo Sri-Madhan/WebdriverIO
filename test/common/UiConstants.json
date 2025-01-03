@@ -1,0 +1,10 @@
+{
+    "homePage":{
+        "description":"Demo app for the appium-boilerplate",
+        "":""
+    },
+    "loginPage":{
+        "title":"Login / Sign up Form",
+        "popupMessage":"You are logged in!"
+    }
+}
