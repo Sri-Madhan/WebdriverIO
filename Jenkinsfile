@@ -2,7 +2,7 @@ pipeline{
     agent any;
 
     parameters{
-        choice(name:'SUITE',choices:['Smoke','Regression','E2E'],description: "Choose the suite to run")
+        choice(name:'SUITE',choices:['smoke','regression','e2e'],description: "Choose the suite to run")
     }
 
     environment {
