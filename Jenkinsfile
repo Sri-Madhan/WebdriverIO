@@ -36,9 +36,10 @@ pipeline{
                     [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  
                     node -v
                     npm -v
+                    npm install
+                    npm run wdio ${SUITE}
                     '''
-                    sh "npm install"
-                    sh "npm run wdio ${SUITE}"  
+                     
                 }
             }
         }
@@ -66,12 +67,12 @@ pipeline{
         }
         failure{
             echo "Failure!"
-                    emailext(
-            subject: "Build Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-            body: "The build has failed. Please check the logs for details.\n\nBuild URL: ${env.BUILD_URL}",
-            to: "srimadhan218@gmail.com", 
-            attachmentsPattern: 'build-reports.zip'
-        )
+        //             emailext(
+        //     subject: "Build Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+        //     body: "The build has failed. Please check the logs for details.\n\nBuild URL: ${env.BUILD_URL}",
+        //     to: "srimadhan218@gmail.com", 
+        //     attachmentsPattern: 'build-reports.zip'
+        // )
         }
     }
 }
