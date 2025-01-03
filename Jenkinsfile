@@ -39,7 +39,7 @@ pipeline{
             steps {
                echo "Zipping the test reports and console logs..."
                 script {
-                    zip -r "build-reports.zip" allure-results logs
+                   sh 'zip -r "build-reports.zip" allure-results logs'
                 } 
             }
         }
