@@ -30,7 +30,7 @@ pipeline{
             steps{
                 echo "Running ${SUITE} suite"
                 withEnv(["PATH+EXTRA=/usr/local/bin", "PROFILE=${PROFILE}"]) {
-                    sh "npm run wdio ${PROFILE}"  
+                    sh "npm run wdio ${SUITE}"  
                 }
             }
         }
