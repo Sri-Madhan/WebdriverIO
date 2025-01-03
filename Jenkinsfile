@@ -29,7 +29,18 @@ pipeline{
         stage('Test'){
             steps{
                 echo "Running ${SUITE} suite"
+                withEnv(["PATH+EXTRA=/usr/local/bin", "PROFILE=${PROFILE}"]) {
+                    sh "npm run wdio ${PROFILE}"  
+                }
+            }
+        }
 
+        stage('Zip Test Reports') {
+            steps {
+               echo "Zipping the test reports and console logs..."
+                script {
+                    zip -r "build-reports.zip" allure-results logs
+                } 
             }
         }
 
@@ -38,9 +49,21 @@ pipeline{
     post {
         success {
             echo "Success!"
+            emailext(
+            subject: "Build Success: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "The build and tests have completed successfully.\n\nYou can check the build details here: ${env.BUILD_URL}",
+            to: "srimadhan218@gmail.com",  
+            attachmentsPattern: 'build-reports.zip'
+        )
         }
         failure{
             echo "Failure!"
+                    emailext(
+            subject: "Build Failure: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "The build has failed. Please check the logs for details.\n\nBuild URL: ${env.BUILD_URL}",
+            to: "srimadhan218@gmail.com", 
+            attachmentsPattern: 'build-reports.zip'
+        )
         }
     }
 }
