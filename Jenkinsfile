@@ -37,6 +37,7 @@ pipeline{
                     node -v
                     npm -v
                     '''
+                    sh "npm install"
                     sh "npm run wdio ${SUITE}"  
                 }
             }
