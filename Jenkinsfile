@@ -7,6 +7,7 @@ pipeline{
 
     environment {
         SUITE = "${params.SUITE}"
+        PLATFORM = "${params.PLATFORM}"
     }
 
     stages{
@@ -29,7 +30,7 @@ pipeline{
         stage('Test'){
             steps{
                 echo "Running ${SUITE} suite"
-                withEnv(["PATH+EXTRA=/usr/local/bin", "SUITE=${SUITE}"]) {
+                withEnv(["PATH+EXTRA=/usr/local/bin", "SUITE=${SUITE}","PLATFORM=${PLATFORM}"]) {
                     sh '''
                     export NVM_DIR="$HOME/.nvm"
                     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" 
@@ -37,7 +38,7 @@ pipeline{
                     node -v
                     npm -v
                     npm install
-                    npm run wdio ${SUITE}
+                    PLATFORM=${PLATFORM} npm run wdio ${SUITE}
                     '''
                      
                 }
